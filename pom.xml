@@ -90,12 +90,23 @@
         <artifactId>wildfly-maven-plugin</artifactId>
         <version>1.0.2.Final</version>
         <configuration>
-            <serverConfig>standalone.xml</serverConfig>
-            <jvmArgs>-Djboss.socket.binding.port-offset=100</jvmArgs>
-            <filename>customer-1.0.war</filename>
+          <port>9999</port>
+          <filename>customer-1.0.war</filename>
         </configuration>
         <executions>
-        <!-- Undeploy the application on clean -->
+          <!-- Undeploy the application on clean -->
+          <execution>
+            <id>run</id>
+            <phase>clean</phase>
+            <goals>
+              <goal>run</goal>
+            </goals>
+            <configuration>
+              <jbossHome>C:\wildfly-8.2.0.Final</jbossHome>
+              <filename>customer-1.0.war</filename>
+            </configuration>
+          </execution>
+          <!-- Undeploy the application on clean -->
           <execution>
             <id>undeploy</id>
             <phase>clean</phase>
